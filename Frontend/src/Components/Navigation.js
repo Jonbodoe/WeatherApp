@@ -26,6 +26,7 @@ const Navigation = () => {
             return <NavRow date={item} />
         })
     }
+
     return (
         <>
             <div className="fixed-top container">
