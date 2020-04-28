@@ -13,10 +13,12 @@ import AppContext from './dataHandling/AppContext'
 function App() {
   const [search, toggleSearch] = useState(false)
   const [weatherList, setWeatherList] = useState([])
+  const [input, onChangeInput] = useState("");
 
   const store = {
     search: { state: search, set: toggleSearch },
-    weather: { state: weatherList, set: setWeatherList }
+    weather: { state: weatherList, set: setWeatherList },
+    input: { state: input, set: onChangeInput }
   }
 
 

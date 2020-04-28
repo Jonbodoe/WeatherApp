@@ -1,30 +1,21 @@
 import React, { useContext } from 'react';
 import AppContext from '../dataHandling/AppContext'
 import NavRow from './NavRow'
+import AddRow from './AddRow';
 
 const Navigation = () => {
-    const searchContext = useContext(AppContext)
-    const listContext = useContext(AppContext)
-    const search = searchContext.search
-    const weatherList = listContext.weather
-
-
+    const stateContext = useContext(AppContext);
+    const search = stateContext.search
+    const weatherList = stateContext.weather
+    const input = stateContext.input
     const displayList = () => {
         if (!Array.isArray(weatherList) || !weatherList.length) {
-            // console.log('is empty')
-            return (
-                <div>
-                    <p className="font-weight-lighter">Lets look up some shit</p>
-                </div>
-            )
+            return <AddRow/>
         } else {
-            mappedList()
+            weatherList.map((item) => {
+                return <NavRow date={item} />
+            })
         }
-    }
-    const mappedList = () => {
-        weatherList.map((item) => {
-            return <NavRow date={item} />
-        })
     }
 
     return (
@@ -43,6 +34,7 @@ const Navigation = () => {
                             </button>
                             <input
                                 className={`h-100 p-2 bg-light ${!search.state ? 'invisible' : ''}`}
+                                onChange={(e) => input.set(e.target.value)}
                                 type="text"
                                 name="name"
                                 placeholder="search"
@@ -51,15 +43,12 @@ const Navigation = () => {
                         </div>
                         <div className="py-4">
                             {
-
                                 displayList()
                             }
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </>
     )
 }
