@@ -6,7 +6,7 @@ const AddRow = () => {
     const input = stateContext.search;
     return (
         <>
-            <button className="btn bg-secondary text-light navRow p-3 w-100" onClick={()=> input.set(!input.state)}>
+            <button className="btn bg-light text-dark navRow p-3 w-100" onClick={()=> input.set(!input.state)}>
                 <div className="d-flex align-items-center justify-content-between">
                     <i className="fa fa-plus"></i>
                     <p className="">add location</p>

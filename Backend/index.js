@@ -17,19 +17,36 @@ app.use(function (req, res, next) {
 });
 
 app.post('/search', function (req, res, next) {
-        const query = req.body.query
-        request (
-        `http://api.weatherstack.com/current?access_key=47ec0f905ee514b756eae4cdbca5803d&query=${query}`,
-        function(error, response, body) {
-            if(!error && response.statusCode == 200) {
+    const query = req.body.query
+    request(
+        `http://api.weatherstack.com/current?access_key=47ec0f905ee514b756eae4cdbca5803d&query=philadelphia`,
+        function (error, response, body) {
+            if (!error && response.statusCode == 200) {
                 const parsedReq = JSON.parse(body);
                 const weather = parsedReq['current']
                 const location = parsedReq['location']
-                res.send({weather, location})
+                res.send({ weather, location })
             }
         }
     )
 });
+
+// var options = {
+//     method: 'POST',
+//     url: 'https://accuweatherstefan-skliarovv1.p.rapidapi.com/searchLocations',
+//     headers: {
+//       'x-rapidapi-host': 'AccuWeatherstefan-skliarovV1.p.rapidapi.com',
+//       'x-rapidapi-key': '698f0dd1ffmsh6212ffd6aac4608p139b3ejsn4ec7a2f982ee',
+//       'content-type': 'application/x-www-form-urlencoded'
+//     },
+//     form: {query: 'hello'}
+//   };
+
+//   request(options, function (error, response, body) {
+//       if (error) throw new Error(error);
+
+//       console.log(body);
+//   });
 
 
 
@@ -60,6 +77,7 @@ app.get('/search', (req, res) => {
     //     }
     // )
 });
+
 
 
 

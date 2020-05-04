@@ -13,10 +13,12 @@ import AppContext from './dataHandling/AppContext'
 function App() {
   const [search, toggleSearch] = useState(false)
   const [weatherList, setWeatherList] = useState([])
+  const [results, setResults] = useState([]);
   const [input, onChangeInput] = useState("");
 
   const store = {
     search: { state: search, set: toggleSearch },
+    results: { state: results, set: setResults},
     weather: { state: weatherList, set: setWeatherList },
     input: { state: input, set: onChangeInput }
   }
@@ -28,10 +30,10 @@ function App() {
       <Router>
         <AppContext.Provider value={store}>
           <MainContainer>
-            <div className="col-sm-4">
+            <div className="col-md-4 bg-warning">
               <Navigation />
             </div>
-            <div className="col-sm-8">
+            <div className="col-md-8">
               <Switch>
                 <Route path="/">
                   <InfoContainer />
