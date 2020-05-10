@@ -9,6 +9,17 @@ app.use(express.json())
 
 app.use(cors());
 
+// const getDate = (offset) => {
+//   	let date = new Date(1589101260 * 1000);
+//     let utc = date.getTime() + (date.getTimezoneOffset() * 60000);  
+//     let newDate = new Date(utc + (3600000*offset));
+//     let hours = newDate.getHours()
+//     let minutes = newDate.getMinutes()
+//     return hours
+//       //return this ^^^^
+// }
+
+// console.log(getDate(parseInt("9.0")))
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
@@ -19,7 +30,7 @@ app.use(function (req, res, next) {
 app.post('/search', function (req, res, next) {
     const query = req.body.query
     request(
-        `http://api.weatherstack.com/current?access_key=47ec0f905ee514b756eae4cdbca5803d&query=philadelphia`,
+        `http://api.weatherstack.com/current?access_key=47ec0f905ee514b756eae4cdbca5803d&query=${query}`,
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 const parsedReq = JSON.parse(body);

@@ -6,8 +6,5 @@ To Do:
 - Throttle Requests API
 - Create Result List Styles
 
-
-
-
 Refactor:
 - Base components 

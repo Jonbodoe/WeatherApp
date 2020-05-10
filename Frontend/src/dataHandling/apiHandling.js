@@ -1,6 +1,31 @@
-// import React, { useContext} from 'react';
+// import { useContext } from 'react';
 // import AppContext from '../dataHandling/AppContext'
 // import axios from "axios";
+// // import Content from "../Components/Content"
+
+
+// const apiHandler = () => {
+//     const stateContext = useContext(AppContext);
+//     const input = stateContext.input;
+//     const results = stateContext.results;
+//     axios
+//         .post("http://localhost:5000/search", { query: input.state })
+//         .then(function (response) {
+//             if (!response.data.location) {
+//                 return console.log(response)
+//             } else if (response.data.location ) {
+//                 return results.push(response.data.location)
+//             }
+//         })
+//         .then(
+//             console.log(results)
+//         )
+//         .catch(function (error) {
+//             console.log(error);
+//         });
+// } 
+
+// export default apiHandler
 
 
 // const apiHandling = async() => {
