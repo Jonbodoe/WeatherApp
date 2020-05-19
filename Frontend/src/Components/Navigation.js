@@ -8,20 +8,11 @@ import axios from "axios";
 
 const Navigation = () => {
     const stateContext = useContext(AppContext);
-    // const search = stateContext.search
-    // const weatherList = stateContext.weather
-    const input = stateContext.input
+    const input = stateContext.input;
     const results = stateContext.results;
-    // const displayList = () => {
-    //     if (!Array.isArray(weatherList) || !weatherList.length) {
-    //         return <AddRow />
-    //     } else {
-    //         weatherList.map((item) => {
-    //             return <NavRow date={item} />
-    //         })
-    //     }
-    // }
-    const apiHandler = ()=> {
+    const location = stateContext.location;
+    let locationRow = {}
+    const apiHandler = () => {
         if (!input.state.length) {
             return
         } else {
@@ -29,30 +20,36 @@ const Navigation = () => {
             axios
                 .post("http://localhost:5000/search", { query: input.state })
                 .then(function (response) {
-                    console.log(response)
                     if (!response.data.location) {
-                        return console.log(response)
+                        console.log('aint got shit')
+                        locationRow = {
+                            location: input.state,
+                            display: false 
+                        }
+                        
                     } else if (response.data.location ) {
-                        const locationRow = 
+
+                        locationRow = 
                             {
                                 location: response.data.location,
-                                weather: response.data.weather
+                                weather: response.data.weather,
+                                display: true
                             }
-                        
-                        return results.set([...results.state, locationRow])
+                        results.set([locationRow,...results.state])
+                        location.set([locationRow])
                     }
                 })
                 .then(
                     console.log(results)
                 )
                 .catch(function (error) {
-                    console.log(error);
+                    console.log(error, 'aint aint working');
             });
         }
     }
     return (
         <>
-            <div className="py-5">
+            <div className="">
                 <div id="nav" className="px-4 d-flex align-items-center">
                     <div className="py-1">
                         <h1>Weather</h1>

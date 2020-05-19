@@ -3,8 +3,15 @@ https://dev.to/aumayeung/how-to-rate-limit-your-api-2peh
 
 
 To Do:
-- Throttle Requests API
-- Create Result List Styles
+
+Features
+- When typing the wrong city/ typo, provide an indication of being error <-- Currently working on
 
 Refactor:
 - Base components 
+- Loading screen api when fetching
+
+Designs/Animations
+- Widgets on the the navigation of recent searches
+
+

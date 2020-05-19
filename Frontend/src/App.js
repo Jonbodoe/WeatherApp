@@ -12,15 +12,19 @@ import AppContext from './dataHandling/AppContext'
 
 function App() {
   // const [search, toggleSearch] = useState(false)
-  const [weatherList, setWeatherList] = useState([])
+  const [weatherList, setWeatherList] = useState([]);
   const [results, setResults] = useState([]);
   const [input, onChangeInput] = useState("");
+  const [loader, showLoader] = useState(false);
+  const [location, setLocation] = useState([])
 
   const store = {
     // search: { state: search, set: toggleSearch },
     results: { state: results, set: setResults },
     weather: { state: weatherList, set: setWeatherList },
-    input: { state: input, set: onChangeInput }
+    input: { state: input, set: onChangeInput },
+    loader: { state: loader, set: showLoader },
+    location: { state: location, set: setLocation}
   }
 
 
@@ -32,7 +36,6 @@ function App() {
           <main className="bg-brown">
             <div className="container">
               <div className="row">
-                {/* <MainContainer> */}
                 <div className="col-md-4 bg-warning">
                   <Navigation />
                 </div>
@@ -46,7 +49,6 @@ function App() {
               </div>
             </div>
           </main>
-          {/* </MainContainer> */}
         </AppContext.Provider>
       </Router>
     </>
