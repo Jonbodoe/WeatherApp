@@ -5,7 +5,7 @@ https://dev.to/aumayeung/how-to-rate-limit-your-api-2peh
 To Do:
 
 Features
-- When typing the wrong city/ typo, provide an indication of being error <-- Currently working on
+- Input remove on change event listener to on submit for the button instead. 
 
 Refactor:
 - Base components 
@@ -13,5 +13,6 @@ Refactor:
 
 Designs/Animations
 - Widgets on the the navigation of recent searches
+- Weather Icons, Rain, Foggy, etc...
 
 

@@ -11,20 +11,23 @@ import InfoContainer from './Components/InfoContainer'
 import AppContext from './dataHandling/AppContext'
 
 function App() {
-  // const [search, toggleSearch] = useState(false)
   const [weatherList, setWeatherList] = useState([]);
   const [results, setResults] = useState([]);
   const [input, onChangeInput] = useState("");
   const [loader, showLoader] = useState(false);
-  const [location, setLocation] = useState([])
+  const [location, setLocation] = useState([]);
+  const [error, setError] = useState({
+    display:false,
+    details: '',
+   });
 
   const store = {
-    // search: { state: search, set: toggleSearch },
     results: { state: results, set: setResults },
     weather: { state: weatherList, set: setWeatherList },
     input: { state: input, set: onChangeInput },
     loader: { state: loader, set: showLoader },
-    location: { state: location, set: setLocation}
+    location: { state: location, set: setLocation},
+    error: { state: error, set: setError}
   }
 
 

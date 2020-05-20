@@ -1,7 +1,7 @@
 import React from 'react';
 
 const GetTime = (offset) => {
-    console.log(offset.utc)
+    // console.log('from get Time')
     let initialDate = new Date();
     let utc = initialDate .getTime() + (initialDate.getTimezoneOffset() * 60000);  
     let newDate = new Date(utc + (3600000*offset.utc));
@@ -13,7 +13,7 @@ const GetTime = (offset) => {
     minutes = minutes < 10 ? '0'+minutes : minutes;
     return (
         <>
-            {`${hours} : ${minutes} ${ampm}`}
+            {`${hours}:${minutes} ${ampm}`}
         </>
     )
 }

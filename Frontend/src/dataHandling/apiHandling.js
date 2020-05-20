@@ -1,7 +1,51 @@
-// import { useContext } from 'react';
-// import AppContext from '../dataHandling/AppContext'
-// import axios from "axios";
-// // import Content from "../Components/Content"
+import { useContext } from 'react';
+import AppContext from '../dataHandling/AppContext'
+import axios from "axios";
+// import Content from "../Components/Content"
+
+// let locationRow = {}
+const apiHandler = () => {
+    const stateContext = useContext(AppContext);
+    const input = stateContext.input;
+    const results = stateContext.results;
+    const location = stateContext.location;
+    const error = stateContext.error;
+    if (!input.state.length) {
+        return
+    } else {
+        console.log(input.state)
+        axios
+            .post("http://localhost:5000/search", { query: input.state })
+            .then(function (response) {
+                if (!response.data.location) {
+                    console.log('aint got shit')
+                    error.set(error.state = {
+                        display: !error.state.display ? !error.state.display : false,
+                        details: 'Uh oh.. either the location is not available or check your typing'
+                    })
+                } else if (response.data.location ) {
+                    error.set(error.state = {display: error.state.display ? !error.state.display : false, details:''})
+                    const locationRow = 
+                        {
+                            location: response.data.location,
+                            weather: response.data.weather,
+                        }
+                    results.set([locationRow,...results.state])
+                    location.set([locationRow])
+                }
+            })
+            .then(
+                console.log(error.state)
+            )
+            .catch(function (error) {
+                // console.log(error, 'aint aint working');
+                error.set(error.state = {
+                    display: !error.state.display ? !error.state.display : false,
+                    details: error
+                })
+        });
+    }
+}
 
 
 // const apiHandler = () => {
@@ -25,7 +69,7 @@
 //         });
 // } 
 
-// export default apiHandler
+export default apiHandler
 
 
 // const apiHandling = async() => {
