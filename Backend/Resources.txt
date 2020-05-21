@@ -8,11 +8,11 @@ Features
 - Input remove on change event listener to on submit for the button instead. 
 
 Refactor:
-- Base components 
-- Loading screen api when fetching
+- Base component
+- Error handle (if weather condition is not recorded & test)
 
 Designs/Animations
 - Widgets on the the navigation of recent searches
-- Weather Icons, Rain, Foggy, etc...
+
 
 

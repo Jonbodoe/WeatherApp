@@ -1,23 +1,30 @@
 import React from 'react';
 import GetTime from '../dataHandling/GetTime'
+import GetIconWeather from '../dataHandling/GetIconWeather';
 
 
 const WeatherSection = (props) => {
+    const CtoF = Math.floor(props.data.weather.temperature*1.8+32)
     return (
         <React.Fragment>
             <div className="p-4 d-flex flex-column">
                 <p className="text-gray pb-3">{`Searched: ${props.data.location.name}`}</p>
                 <div className="">
                     <div className="py-4 text-center">
-                        <i id="sun-icon-spin" className="fa fa-sun-o text-light"></i>
+                        <GetIconWeather condition={props.data.weather.weather_descriptions[0]}/>
                     </div>
                     <div className="d-flex flex-row justify-content-between align-items-center py-3 h-100">
                         <div className="text-left p-3">
                             <p className="text-gray font-weight-light">Current Weather</p>
                             <div className="d-flex flex-row text-light serif">
-                                <h2 className="">{props.data.weather.weather_descriptions[0]}</h2>
-                                <h2 className="px-2"> / </h2>
-                                <h2 className="">{`${props.data.weather.temperature}°C`}</h2>
+                                <h2 className="">
+                                    {props.data.weather.weather_descriptions[0]}
+                                    {/* <div className="px-2"> / </div> */}                 
+                                </h2>
+                                <div className="px-2"> / </div>
+                                <h3>
+                                    {`${CtoF}°F`}
+                                </h3>
                             </div>
                         </div>
                         <div className="text-left px-3">

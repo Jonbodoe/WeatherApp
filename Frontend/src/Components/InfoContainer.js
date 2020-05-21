@@ -9,12 +9,13 @@ const InfoContainer = () => {
     const location = stateContext.location;
     const results = stateContext.results;
     const error = stateContext.error;
+    const loader = stateContext.loader
 
     const listResults = () => {
         // console.log('from info container', error.state)
         if (!results.state.length || error.state.display) {
             return (
-                <CallToAction info={error.state} search={input.state}/>
+                <CallToAction info={error.state} search={input.state} loader={loader.state}/>
             )
         } else {
             return (
@@ -31,6 +32,10 @@ const InfoContainer = () => {
     return (
         <>
             <section id="Weather-Container">
+            <div>
+                
+
+            </div>
                 {
                     listResults()
                 }

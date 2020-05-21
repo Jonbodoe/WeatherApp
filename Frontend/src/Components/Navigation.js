@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../dataHandling/AppContext'
 import axios from "axios";
+import NavRow from './NavRow';
 
 const Navigation = () => {
     const stateContext = useContext(AppContext);
@@ -8,11 +9,14 @@ const Navigation = () => {
     const results = stateContext.results;
     const location = stateContext.location;
     const error = stateContext.error;
+    const loader = stateContext.loader;
     const apiHandler = () => {
+        loader.set(loader.state = !loader.state)
+        console.log(loader.state,1)
         if (!input.state.length) {
             return
         } else {
-            console.log(input.state)
+            // console.log(input.state)            
             axios
                 .post("http://localhost:5000/search", { query: input.state })
                 .then(function (response) {
@@ -32,14 +36,17 @@ const Navigation = () => {
                         results.set([locationRow, ...results.state])
                         location.set([locationRow])
                     }
+                    loader.set(loader.state = !loader.state)
+                   
                 })
-                // .then(
-                //     console.log(error.state)
-                // )
-                .catch(function (error) {
+                .then(
+                    console.log(loader.state,2)
+                )
+                .catch(function (errorInfo) {
+                    loader.set(loader.state = !loader.state)
                     error.set(error.state = {
                         display: !error.state.display ? !error.state.display : false,
-                        details: error
+                        details: errorInfo
                     })
                 });
         }
@@ -75,12 +82,10 @@ const Navigation = () => {
                                 Search
                             </button>
                         </div>
-                        <div className="line"></div>
-                    </div>
-                    <div className="py-4 d-flex flex-column">
-                        {/* {
-                            displayList()
-                        } */}
+                        <div className="line pb-4"></div>
+                        {
+                            results.state.length ? results.state.map((info, i)=> <NavRow key={i} current={info}/>) : <></>
+                        }
                     </div>
                 </div>
             </div>
