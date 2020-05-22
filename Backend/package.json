@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "nodemon index.js",
+    "heroku-postbuild": "cd ../Frontend && npm install && npm run build"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
