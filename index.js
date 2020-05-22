@@ -1,7 +1,9 @@
 const express = require('express')
-const request = require('request')
+// const request = require('request')
+const fetch = require('node-fetch');
 const cors = require("cors");
 const app = express()
+// const async  = require('express-async-await')
 const port = process.env.PORT || 5000
 const path = require('path')
 
@@ -18,17 +20,20 @@ app.use(function (req, res, next) {
 
 app.post('/search', function (req, res, next) {
     const query = req.body.query
-    request(
-        `http://api.weatherstack.com/current?access_key=47ec0f905ee514b756eae4cdbca5803d&query=${query}`,
-        function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                const parsedReq = JSON.parse(body);
-                const weather = parsedReq['current']
-                const location = parsedReq['location']
-                res.send({ weather, location })
-            }
-        }
+    fetch(
+        `http://api.weatherstack.com/current?access_key=47ec0f905ee514b756eae4cdbca5803d&query=${query}`
     )
+    .then(res => res.json())
+    .then(data => {
+        // const parsedReq = JSON.parse(data);
+        const weather = data['current']
+        const location = data['location']
+        res.send({ weather, location })
+        // res.send({ data });
+    })
+    .catch(err => {
+        res.redirect('/error');
+    });
 });
 
 if ( process.env.NODE_ENV === 'production') {
