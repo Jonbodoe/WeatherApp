@@ -12,7 +12,7 @@ const Navigation = () => {
     const loader = stateContext.loader;
     const apiHandler = () => {
         loader.set(loader.state = !loader.state)
-        console.log(loader.state,1)
+        console.log(loader.state, 1)
         if (!input.state.length) {
             return
         } else {
@@ -37,16 +37,16 @@ const Navigation = () => {
                         location.set([locationRow])
                     }
                     loader.set(loader.state = !loader.state)
-                   
+
                 })
                 .then(
-                    console.log(loader.state,2)
+                    console.log(loader.state, 2)
                 )
                 .catch(function (errorInfo) {
                     loader.set(loader.state = !loader.state)
                     error.set(error.state = {
                         display: !error.state.display ? !error.state.display : false,
-                        details: errorInfo
+                        details: errorInfo.message
                     })
                 });
         }
@@ -83,9 +83,17 @@ const Navigation = () => {
                             </button>
                         </div>
                         <div className="line pb-4"></div>
-                        {
-                            results.state.length ? results.state.map((info, i)=> <NavRow key={i} current={info}/>) : <></>
-                        }
+                        <div id="nav-widgets">
+                            {
+                                results.state.length ? results.state.map((info, i) =>
+                                    <div className="navRow p-3 nav-widget" onClick={() => console.log('hello')} >
+                                        <NavRow key={i} current={info} />
+                                    </div>
+                                )
+                                    :
+                                    <></>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

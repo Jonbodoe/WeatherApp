@@ -3,6 +3,8 @@
   --brown: #3d3d3d;
   --orange: #fe5c36;
   --gray: #d1d1d1;
+  /* --light: #f8f9fa;
+  --yellow: #f7c244; */
 }
 p{
   font-size: 1.3rem;
@@ -116,5 +118,20 @@ input.form-control {
   to {
     transform: rotate(360deg);
   }
+}
+
+.nav-widget {
+  background-color: var(--light);
+  opacity: 1;
+  transition: all 0.2s ease
+}
+
+.nav-widget:hover {
+    opacity: 0.7
+}
+
+#nav-widgets {
+  overflow: scroll;
+  height: 14rem;
 }
 

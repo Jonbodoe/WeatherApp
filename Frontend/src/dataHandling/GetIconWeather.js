@@ -9,7 +9,7 @@ const GetIconWeather = (props) => {
         },
         {
             html: <i id="weather-icon" className="fas fa-cloud text-light"></i>,
-            weather: ['Partly cloudy', 'Overcast']
+            weather: ['Partly cloudy', 'Overcast', 'Patchy rain possible']
         },
         {
             html: <i id="weather-icon" className="fas fa-moon text-light"></i>,
