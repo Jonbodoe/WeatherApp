@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NavRow = (props) => {
-    console.log(props.current)
+    // console.log(props.current)
     return (
         <>
             {/* <div className="navRow p-3 nav-widget"> */}

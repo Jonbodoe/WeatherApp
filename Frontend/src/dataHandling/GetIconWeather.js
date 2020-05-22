@@ -1,7 +1,7 @@
 import React from 'react';
 
 const GetIconWeather = (props) => {
-    console.log(props.condition)
+    // console.log(props.condition)
     let conditions = [
         {
             html: <i id="weather-icon" className="fas fa-cloud-rain text-light"></i>,

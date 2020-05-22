@@ -10,15 +10,15 @@ const Navigation = () => {
     const location = stateContext.location;
     const error = stateContext.error;
     const loader = stateContext.loader;
-    const apiHandler = () => {
+    const apiHandler = (queryList) => {
         loader.set(loader.state = !loader.state)
-        console.log(loader.state, 1)
-        if (!input.state.length) {
-            return
+        console.log(queryList, 1)
+        if (!queryList.length) {
+            return 
         } else {
             // console.log(input.state)            
             axios
-                .post("http://localhost:5000/search", { query: input.state })
+                .post("http://localhost:5000/search", { query: queryList })
                 .then(function (response) {
                     if (!response.data.location) {
                         console.log('aint got shit')
@@ -68,14 +68,14 @@ const Navigation = () => {
                                 placeholder="Enter A City"
                                 onKeyDown={(e) => {
                                     if (e.keyCode === 13) {
-                                        apiHandler()
+                                        apiHandler(input.state)
                                     }
                                 }
                                 }
                             />
                             <button
                                 id="search"
-                                onClick={() => apiHandler()}
+                                onClick={() => apiHandler(input.state)}
                                 className="btn btn-light text-dark"
                             >
                                 <i className="fa fa-search px-2"></i>
@@ -86,8 +86,8 @@ const Navigation = () => {
                         <div id="nav-widgets">
                             {
                                 results.state.length ? results.state.map((info, i) =>
-                                    <div className="navRow p-3 nav-widget" onClick={() => console.log('hello')} >
-                                        <NavRow key={i} current={info} />
+                                    <div className="navRow p-3 nav-widget" onClick={() => apiHandler(info.location.name)} key={i}>
+                                        <NavRow current={info} />
                                     </div>
                                 )
                                     :

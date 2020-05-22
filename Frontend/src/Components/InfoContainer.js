@@ -12,7 +12,6 @@ const InfoContainer = () => {
     const loader = stateContext.loader
 
     const listResults = () => {
-        // console.log('from info container', error.state)
         if (!results.state.length || error.state.display) {
             return (
                 <CallToAction info={error.state} search={input.state} loader={loader.state}/>
