@@ -5,7 +5,7 @@ const GetIconWeather = (props) => {
     let conditions = [
         {
             html: <i id="weather-icon" className="fas fa-cloud-rain text-light"></i>,
-            weather: ['Rain, Mist', 'Heavy Rain', 'Light Rain', 'Light Rain Shower', 'Heavy Rain Shower', 'Light Rain With Thunderstorm', 'Heavy Rain With Thunderstorm'],
+            weather: ['Rain, Mist', 'Heavy Rain', 'Light Rain', 'Light Rain Shower', 'Heavy Rain Shower', 'Light Rain With Thunderstorm', 'Heavy Rain With Thunderstorm', 'Light drizzle'],
         },
         {
             html: <i id="weather-icon" className="fas fa-cloud text-light"></i>,

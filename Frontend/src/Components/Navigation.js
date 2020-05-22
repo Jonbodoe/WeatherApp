@@ -18,7 +18,7 @@ const Navigation = () => {
         } else {
             // console.log(input.state)            
             axios
-                .post("http://localhost:5000/search", { query: queryList })
+                .post("http://localhost:5000/search" || process.env.PORT , { query: queryList })
                 .then(function (response) {
                     if (!response.data.location) {
                         console.log('aint got shit')
