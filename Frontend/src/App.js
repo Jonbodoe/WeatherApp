@@ -9,6 +9,7 @@ import {
 } from "react-router-dom"
 import InfoContainer from './Components/InfoContainer'
 import AppContext from './dataHandling/AppContext'
+import './index.css'
 
 function App() {
   const [weatherList, setWeatherList] = useState([]);
