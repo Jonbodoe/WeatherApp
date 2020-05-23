@@ -12,11 +12,11 @@ app.use(express.json())
 
 app.use(cors());
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin",  process.env.PORT || "http://localhost:3000"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+// app.use(function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin",  process.env.PORT || "http://localhost:3000"); // update to match the domain you will make the request from
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 
 app.post('/search', function (req, res, next) {
     const query = req.body.query
@@ -37,9 +37,9 @@ app.post('/search', function (req, res, next) {
 });
 
 if ( process.env.NODE_ENV === 'production') {
-    app.use(express.static('/Frontend/build'))
+    app.use(express.static('./Frontend/build'))
 
-    app.get('*', (req, res) => {
+    app.get('/*', (req, res) => {
         res.sendFile(path.join(__dirname, 'Frontend', 'build', 'index.html'));
     })
 }
