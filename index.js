@@ -1,4 +1,7 @@
+// const api = require('apiQuery.js')
+
 const express = require('express')
+require('dotenv').config()
 // const request = require('request')
 const fetch = require('node-fetch');
 const cors = require("cors");
@@ -20,11 +23,15 @@ app.use(cors());
 
 app.post('/search', function (req, res, next) {
     const query = req.body.query
+    const apiQuery = process.env.API_KEY
     fetch(
-        `http://api.weatherstack.com/current?access_key=47ec0f905ee514b756eae4cdbca5803d&query=${query}`
+        `http://api.weatherstack.com/current?access_key=${apiQuery}&query=${query}`
     )
-    .then(res => res.json())
+    .then(
+        res => res.json()
+    )
     .then(data => {
+        console.log(data,2)
         // const parsedReq = JSON.parse(data);
         const weather = data['current']
         const location = data['location']

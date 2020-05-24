@@ -20,8 +20,10 @@ const Navigation = () => {
             axios
                 .post("http://localhost:5000/search", { query: queryList })
                 .then(function (response) {
+                    console.log(response)
                     if (!response.data.location) {
                         console.log('aint got shit')
+                        
                         error.set(error.state = {
                             display: !error.state.display ? !error.state.display : false,
                             details: 'Uh oh.. either the location is not available or check your typing'
@@ -39,9 +41,9 @@ const Navigation = () => {
                     loader.set(loader.state = !loader.state)
 
                 })
-                .then(
-                    console.log(loader.state, 2)
-                )
+                // .then(
+                //     console.log(loader.state, 2)
+                // )
                 .catch(function (errorInfo) {
                     loader.set(loader.state = !loader.state)
                     error.set(error.state = {
