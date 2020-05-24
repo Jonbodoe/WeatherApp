@@ -21,7 +21,7 @@ app.use(cors());
 //     next();
 // });
 
-app.post('/search', function (req, res, next) {
+app.post('/', function (req, res, next) {
     const query = req.body.query
     const apiQuery = process.env.API_KEY
     fetch(
