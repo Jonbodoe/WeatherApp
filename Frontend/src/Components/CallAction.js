@@ -11,7 +11,6 @@ const CallToAction = (props) => {
                         props.info.display ?
                             <>
                                 <p className="text-center"><i id="weather-icon" className="fa fa-frown-o text-gray"></i></p>
-                                <p className="text-white text-center">Searched: {props.search}</p>
                                 <p className="text-gray font-weight-lighter">{props.info.details}</p>
                             </>
                             :
