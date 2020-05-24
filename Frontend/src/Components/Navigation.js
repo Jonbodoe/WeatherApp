@@ -18,7 +18,7 @@ const Navigation = () => {
         } else {
             // console.log(input.state)            
             axios
-                .post(`${process.env.PORT}search` || "http://localhost:5000/search", { query: queryList })
+                .post(`${process.env.PORT/search}` || "http://localhost:5000/search", { query: queryList })
                 .then(function (response) {
                     console.log(response)
                     if (!response.data.location) {
