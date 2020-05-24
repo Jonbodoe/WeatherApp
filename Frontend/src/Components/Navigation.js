@@ -13,13 +13,13 @@ const Navigation = () => {
     const apiHandler = (queryList) => {
         loader.set(loader.state = !loader.state)
         console.log(queryList, 1)
-        console.log(process.env.PORT)
+        console.log(process.env)
         if (!queryList.length) {
             return 
         } else {
             // console.log(input.state)            
             axios
-                .post(`${process.env.PORT}` || "http://localhost:5000/search", { query: queryList })
+                .post(`${process.env}` || "http://localhost:5000/search", { query: queryList })
                 .then(function (response) {
                     console.log(response)
                     if (!response.data.location) {
