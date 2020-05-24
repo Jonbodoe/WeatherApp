@@ -51,7 +51,7 @@ if ( process.env.NODE_ENV === 'production') {
     })
 }
 
-app.get('/search', (req, res) => {
+app.get('/', (req, res) => {
     res.send('running')
 });
 

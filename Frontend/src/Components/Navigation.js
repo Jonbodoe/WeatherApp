@@ -20,10 +20,10 @@ const Navigation = () => {
             // console.log(input.state)            
             axios
                 .post(process.env.PUBLIC_URL, { query: queryList })
+                // node index.js URL must match routers
                 .then(function (response) {
                     console.log(response)
                     if (!response.data.location) {
-                        console.log('aint got shit')
                         
                         error.set(error.state = {
                             display: !error.state.display ? !error.state.display : false,
@@ -42,6 +42,9 @@ const Navigation = () => {
                     loader.set(loader.state = !loader.state)
 
                 })
+                // .then(
+                //     loader.set(loader.state = !loader.state)
+                // )
                 // .then(
                 //     console.log(loader.state, 2)
                 // )
@@ -70,15 +73,17 @@ const Navigation = () => {
                                 name="name"
                                 placeholder="Enter A City"
                                 onKeyDown={(e) => {
-                                    if (e.keyCode === 13) {
+                                    return e.keyCode === 13 ?
                                         apiHandler(input.state)
-                                    }
+                                    : false
                                 }
                                 }
                             />
                             <button
                                 id="search"
-                                onClick={() => apiHandler(input.state)}
+                                onClick={(e) => 
+                                    apiHandler(input.state)
+                                }
                                 className="btn btn-light text-dark"
                             >
                                 <i className="fa fa-search px-2"></i>
