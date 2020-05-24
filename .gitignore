@@ -5,9 +5,6 @@
 /.pnp
 .pnp.js
 
-# api
-apiQuery.js
-
 # testing
 /coverage
 
@@ -16,6 +13,7 @@ apiQuery.js
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local
