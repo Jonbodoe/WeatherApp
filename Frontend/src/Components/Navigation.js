@@ -19,7 +19,7 @@ const Navigation = () => {
         } else {
             // console.log(input.state)            
             axios
-                .post(`${process.env.PUBLIC_URL}` || "http://localhost:5000/", { query: queryList })
+                .post("http://localhost:5000/" || process.env.PUBLIC_URL, { query: queryList })
                 .then(function (response) {
                     console.log(response)
                     if (!response.data.location) {
